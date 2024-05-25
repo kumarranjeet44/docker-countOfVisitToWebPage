@@ -1,0 +1,13 @@
+version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  node-app:
+    restart: on-failure
+    #ERROR: The Compose file is invalid because:
+    #Service node-app has neither an image nor a build context specified. At least one must be provided.
+    # so either we provide the build context or we should provide the image source
+    #build: .  --> build he image and store it locally, and if we push that image to docker hub then we can use below command
+    image: h494457/vistcountforwebpage
+    ports:
+      - "8081:8081"
